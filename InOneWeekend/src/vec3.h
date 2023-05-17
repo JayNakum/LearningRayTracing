@@ -1,10 +1,20 @@
 #pragma once
 
-#include <cmath>
+#include "Core.h"
 #include <iostream>
 
 class vec3
 {
+public:
+	inline static vec3 random()
+	{
+		return vec3(random_float(), random_float(), random_float());
+	}
+	inline static vec3 random(float min, float max)
+	{
+		return vec3(random_float(min, max), random_float(min, max), random_float(min, max));
+	}
+
 public:
 	vec3() : e{0.0f, 0.0f, 0.0f} {}
 	vec3(float e0, float e1, float e2) : e{e0, e1, e2} {}
@@ -16,6 +26,8 @@ public:
 	inline float r() const { return e[0]; }
 	inline float g() const { return e[1]; }
 	inline float b() const { return e[2]; }
+
+public:
 
 	vec3 operator-() const { return vec3(-e[0], -e[1], -e[2]); }
 	float operator[] (unsigned int i) const { return e[i]; }
@@ -60,6 +72,28 @@ public:
 
 using point3 = vec3;
 using color = vec3;
+
+inline vec3 random_in_unit_sphere() 
+{
+	while (true) {
+		vec3 p = vec3::random(-1, 1);
+		if (p.length_squared() >= 1) continue;
+		return p;
+	}
+}
+
+inline vec3 random_unit_vector()
+{
+	return unit_vector(random_in_unit_sphere());
+}
+
+vec3 random_in_hemisphere(const vec3& normal) {
+	vec3 in_unit_sphere = random_in_unit_sphere();
+	if (dot(in_unit_sphere, normal) > 0.0) // In the same hemisphere as the normal
+		return in_unit_sphere;
+	else
+		return -in_unit_sphere;
+}
 
 
 inline std::ostream& operator<< (std::ostream& out, const vec3& v)

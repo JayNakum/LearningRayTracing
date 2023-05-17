@@ -7,12 +7,16 @@
 
 #include <iostream>
 
-color rayColor(const ray& r, const Hittable& world)
+color rayColor(const ray& r, const Hittable& world, int depth)
 {
     HitRecord record;
-    if (world.hit(r, 0, infinity, record))
+ 
+    if (depth <= 0) return color(0, 0, 0);
+    
+    if (world.hit(r, 0.001f, infinity, record))
     {
-        return 0.5f * (record.normal + color(1, 1, 1));
+        point3 target = record.p + random_in_hemisphere(record.normal);
+        return 0.5f * rayColor(ray(record.p, target - record.p), world, depth-1);
     }
 
     vec3 unit_direction = unit_vector(r.direction());
@@ -26,6 +30,7 @@ int main()
     const int imageWidth = 400;
     const int imageHeight = static_cast<int>(imageWidth / aspectRatio);
     const int samplesPerPixels = 100;
+    const int max_depth = 50;
 
     HittableList world;
     world.add(std::make_shared<Sphere>(point3(0, 0, -1), 0.5f));
@@ -44,7 +49,7 @@ int main()
                 float u = (i + random_float()) / (imageWidth - 1);
                 float v = (j + random_float()) / (imageHeight - 1);
                 ray r = camera.getRay(u, v);
-                pixel += rayColor(r, world);
+                pixel += rayColor(r, world, max_depth);
             }
             write_color(std::cout, pixel, samplesPerPixels);
         }

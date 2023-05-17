@@ -144,10 +144,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\HittableList.cpp" />
+    <ClCompile Include="src\Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\color.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Color.h" />
+    <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\Hittable.h" />
+    <ClInclude Include="src\HittableList.h" />
     <ClInclude Include="src\ray.h" />
+    <ClInclude Include="src\Sphere.h" />
     <ClInclude Include="src\vec3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

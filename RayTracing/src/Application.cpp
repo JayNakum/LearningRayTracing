@@ -81,10 +81,10 @@ HittableList random_scene() {
 
 int main() 
 {
-    const float aspectRatio = 16.0f / 9.0f;
-    const int imageWidth = 400;
+    const float aspectRatio = 3.0f / 2.0f;
+    const int imageWidth = 1200;
     const int imageHeight = static_cast<int>(imageWidth / aspectRatio);
-    const int samplesPerPixels = 100;
+    const int samplesPerPixels = 500;
     const int max_depth = 50;
 
     HittableList world = random_scene();
@@ -92,7 +92,7 @@ int main()
     point3 lookfrom(13, 2, 3);
     point3 lookat(0, 0, 0);
     vec3 vup(0, 1, 0);
-    auto dist_to_focus = 10.0;
+    auto dist_to_focus = 10.0f; // (lookfrom - lookat).length();
     auto aperture = 0.1f;
 
     Camera camera(lookfrom, lookat, vup, 20, aspectRatio, aperture, dist_to_focus);

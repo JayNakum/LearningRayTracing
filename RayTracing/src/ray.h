@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RAY_H
+#define RAY_H
 
 #include "vec3.h"
 
@@ -14,10 +15,12 @@ public:
 
 	inline point3 at(const float t) const
 	{
-		return m_origin + t*m_direction;
+		return m_origin + t * m_direction;
 	}
 
 private:
 	point3 m_origin;
 	vec3 m_direction;
 };
+
+#endif // !RAY_H

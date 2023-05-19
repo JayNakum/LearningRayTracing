@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e159d8f6-89de-4753-9b93-676a163820e2}</ProjectGuid>
-    <RootNamespace>InOneWeekend</RootNamespace>
+    <ProjectGuid>{b8bb9584-53d0-4513-91bf-16e150f8ebc3}</ProjectGuid>
+    <RootNamespace>RayTracing</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,21 +70,21 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)-$(Platform)</OutDir>
-    <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Configuration)-$(Platform)</IntDir>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)-$(Platform)</OutDir>
-    <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Configuration)-$(Platform)</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)-$(Configuration)-$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin\int\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)-$(Platform)</OutDir>
-    <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Configuration)-$(Platform)</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)-$(Configuration)-$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin\int\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(ProjectName)-$(Configuration)-$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin\int\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)bin\$(ProjectName)\$(Configuration)-$(Platform)</OutDir>
-    <IntDir>$(SolutionDir)bin\int\$(ProjectName)\$(Configuration)-$(Platform)</IntDir>
+    <OutDir>$(SolutionDir)bin\$(ProjectName)-$(Configuration)-$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)bin\int\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -144,15 +144,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\HittableList.cpp" />
-    <ClCompile Include="src\Sphere.cpp" />
+    <ClCompile Include="src\Material.cpp" />
+    <ClCompile Include="src\vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
-    <ClInclude Include="src\Color.h" />
-    <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\color.h" />
+    <ClInclude Include="src\Utility.h" />
+    <ClInclude Include="src\HitRecord.h" />
     <ClInclude Include="src\Hittable.h" />
     <ClInclude Include="src\HittableList.h" />
+    <ClInclude Include="src\Material.h" />
     <ClInclude Include="src\ray.h" />
     <ClInclude Include="src\Sphere.h" />
     <ClInclude Include="src\vec3.h" />

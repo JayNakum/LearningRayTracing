@@ -1,11 +1,17 @@
-#pragma once
+#ifndef HITRECORD_H
+#define HITRECORD_H
 
 #include "ray.h"
+#include "vec3.h"
+#include "Utility.h"
+
+class Material;
 
 struct HitRecord
 {
 	point3 p;
 	vec3 normal;
+	std::shared_ptr<Material> material;
 	float t = 0.0f;
 	bool frontFace = false;
 
@@ -16,8 +22,4 @@ struct HitRecord
 	}
 };
 
-class Hittable
-{
-public:
-	virtual bool hit(const ray& r, float t_min, float t_max, HitRecord& record) const = 0;
-};
+#endif // !HITRECORD_H

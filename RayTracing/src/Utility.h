@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UTILITY_H
+#define UTILITY_H
 
 #include <cmath>
 #include <limits>
@@ -12,7 +13,7 @@ const float pi = 3.1415926535897932385;
 
 // Utility Functions
 
-inline float degrees_to_radians(float degrees) 
+inline float degrees_to_radians(float degrees)
 {
     return degrees * pi / 180.0;
 }
@@ -33,5 +34,4 @@ inline float clamp(float x, float MIN, float MAX)
     return x;
 }
 
-#include "ray.h"
-#include "vec3.h"
+#endif // !UTILITY_H

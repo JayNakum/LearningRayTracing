@@ -1,2 +1,1 @@
-# LearningRayTracing
-A practice project to implement Ray Tracing.
+# [raytracing.github.io](https://raytracing.github.io/)
